@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -35,9 +36,8 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
             pstm.setString(1, usuario.getNome());
             pstm.setString(2, usuario.getEmail());
-            pstm.setLong(3, usuario.getDataNascimento().toEpochDay());
-
-            System.out.println(usuario.getDataNascimento().toEpochDay());
+            //TIMESTAMP [yyyy-MM-dd HH:mm:ss]
+            pstm.setTimestamp(3, Timestamp.valueOf(usuario.getDataNascimento()));
 
             pstm.executeUpdate();   //executa a query no banco de dados
             pstm.close();       //fecha a conexao para salvar as alteraçoes
@@ -68,10 +68,17 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             pstm.close();
             con.close();
 
+            //TipoDeRetorno nomeMetodo(TipoDeParametro nomeDoParametro) { implementacao }
+            //nomeMetodo(nomeParametro : Tipo) : TipoRetorno
+
+            //chamada de metodo
+            // nomeDoMetodo() // Call
+
             if(consulta.next()){
+                int id = consulta.getInt("id_usuario");
                 String nome = consulta.getString("nome_usuario");
-                LocalDateTime dataNascimento = LocalDateTime.ofInstant(Instant.ofEpochMilli(consulta.getLong("data_nascimento")), null);
-                Usuario usuario = new Usuario(nome, dataNascimento, email);
+                LocalDateTime dataNascimento = consulta.getTimestamp("data_nascimento").toLocalDateTime();
+                Usuario usuario = new Usuario(id, nome, dataNascimento, email);
 
                 return usuario;
             }
@@ -95,11 +102,15 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             pstm.close();
             con.close();
 
-            while(consulta.next()){
+            while(consulta.next()){ //resultSet.next() sempre navega para o primeiro do ResultSet
+                //montar um objeto Usuario com base nos dados vindos da consulta do Banco de Dados
+                int id = consulta.getInt("id_usuario");
                 String nome = consulta.getString("nome_usuario");
-                LocalDateTime dataNascimento = LocalDateTime.ofInstant(Instant.ofEpochMilli(consulta.getLong("data_nascimento")), null);
+                LocalDateTime dataNascimento = consulta.getTimestamp("data_nascimento").toLocalDateTime(); //Converter dados em Programação se chama "Casting"
                 String email = consulta.getString("email_usuario");
-                Usuario usuario = new Usuario(nome, dataNascimento, email);
+                Usuario usuario = new Usuario(id, nome, dataNascimento, email);
+                
+                //Adiciona o Usuario montado na lista de usuários
                 listaUsuarios.add(usuario);
  
             }
@@ -114,7 +125,24 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
     @Override
     public Result editar(Usuario usuario) {
-        // TODO Auto-generated method stub
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            String sql = "UPDATE tb_usuarios SET nome_usuario = ?, email_usuario = ?, data_nascimento = ? WHERE id_usuario = ?";
+            PreparedStatement pstm = con.prepareStatement(sql);
+
+            pstm.setString(1, usuario.getNome());
+            pstm.setString(2, usuario.getEmail());
+            pstm.setTimestamp(3, Timestamp.valueOf(usuario.getDataNascimento()));
+            pstm.setInt(4, usuario.getId());
+
+            pstm.executeUpdate();
+            pstm.close();
+            con.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -126,3 +154,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
     
 }
 //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); formatar data do tipo Date
+
+
+//COMANDOS SQL
+//INSERT - inserir
+//SELECT - selecionar
+//UPDATE - atualizar
+//DELETE - remover

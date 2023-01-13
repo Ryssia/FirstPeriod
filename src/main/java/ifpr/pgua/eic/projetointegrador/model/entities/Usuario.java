@@ -1,19 +1,33 @@
 package ifpr.pgua.eic.projetointegrador.model.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Usuario {
+    private int id; 
     private String nome;
     private LocalDateTime dataNascimento;
     private String email;
 
-    public Usuario(String nome, LocalDateTime dataNascimento, String email){
+
+    public Usuario(int id, String nome, LocalDateTime dataNascimento, String email) {
+        this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.email = email;
     }
     
+    public Usuario(String nome, LocalDateTime dataNascimento, String email){
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
