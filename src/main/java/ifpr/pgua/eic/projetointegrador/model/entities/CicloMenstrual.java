@@ -1,6 +1,5 @@
 package ifpr.pgua.eic.projetointegrador.model.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class CicloMenstrual {

@@ -2,9 +2,12 @@ package ifpr.pgua.eic.projetointegrador.model.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.model.FabricaConexoes;
@@ -82,14 +85,80 @@ public class JDBCCicloMenstrualDAO implements CicloMenstrualDAO{
 
     @Override
     public List<CicloMenstrual> listar(Usuario usuario) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            String sql = "SELECT * FROM tb_ciclos_menstruais WHERE id_usuario = ?";   //comando que vai puxar todos cadastrados 
+            PreparedStatement pstm = con.prepareStatement(sql);
+            List<CicloMenstrual> listaCiclos = new ArrayList<>();
+
+            pstm.setInt(1, usuario.getId());
+
+            ResultSet consulta = pstm.executeQuery();   //guarda o resultado da busca realizada
+
+            while(consulta.next()){ 
+                int idCiclo = consulta.getInt("id_ciclo_menstrual");
+                int idUsuario = consulta.getInt("id_usuario");
+                LocalDateTime dataInicio = consulta.getTimestamp("data_inicio").toLocalDateTime();
+                LocalDateTime dataTermino = consulta.getTimestamp("data_termino").toLocalDateTime(); //Converter dados em Programação se chama "Casting"
+                String tipoFluxo = consulta.getString("tipo_fluxo");
+                String comentarios = consulta.getString("comentarios");
+                
+                CicloMenstrual cicloMenstrual = new CicloMenstrual(idCiclo, idUsuario, dataInicio, dataTermino, tipoFluxo, comentarios);
+
+                listaCiclos.add(cicloMenstrual);
+ 
+            }
+               
+            pstm.close();
+            con.close();
+            return listaCiclos;
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();      //mostrar erro no terminal
+            return null;
+        }
     }
 
     @Override
-    public List<CicloMenstrual> listar(Usuario usuario, LocalDate dataInicio, LocalDate dataTermino) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<CicloMenstrual> listar(Usuario usuario, LocalDateTime dataInicio, LocalDateTime dataTermino) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            String sql = "SELECT * FROM tb_ciclos_menstruais WHERE id_usuario = ? "+
+                        "AND data_inicio BETWEEN ? AND ? "+
+                        "AND data_termino BETWEEN ? AND ? ";   //vai selecionar conforme as datas cadastradas
+            
+
+            PreparedStatement pstm = con.prepareStatement(sql);
+            List<CicloMenstrual> listaCiclos = new ArrayList<>();
+
+            pstm.setInt(1, usuario.getId());
+
+            ResultSet consulta = pstm.executeQuery();   //guarda o resultado da busca realizada
+
+            while(consulta.next()){ 
+                int idCiclo = consulta.getInt("id_ciclo_menstrual");
+                int idUsuario = consulta.getInt("id_usuario");
+                LocalDateTime dataIni = consulta.getTimestamp("data_inicio").toLocalDateTime();
+                LocalDateTime dataTer = consulta.getTimestamp("data_termino").toLocalDateTime(); //Converter dados em Programação se chama "Casting"
+                String tipoFluxo = consulta.getString("tipo_fluxo");
+                String comentarios = consulta.getString("comentarios");
+                
+                CicloMenstrual cicloMenstrual = new CicloMenstrual(idCiclo, idUsuario, dataIni, dataTer, tipoFluxo, comentarios);
+
+                listaCiclos.add(cicloMenstrual);
+ 
+            }
+               
+            pstm.close();
+            con.close();
+            return listaCiclos;
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();      //mostrar erro no terminal
+            return null;
+        }
     }
 
     @Override
