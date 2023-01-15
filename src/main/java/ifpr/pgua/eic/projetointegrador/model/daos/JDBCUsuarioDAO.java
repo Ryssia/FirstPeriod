@@ -148,8 +148,23 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
     @Override
     public Result excluir(Usuario usuario) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            String sql = "DELETE FROM tb_usuarios WHERE id_usuario = ?"; 
+            PreparedStatement pstm = con.prepareStatement(sql);
+
+            pstm.setInt(1, usuario.getId());
+
+            pstm.executeUpdate();
+            pstm.close();
+            con.close();
+
+            return Result.success("Removido com sucesso!");
+
+        } catch (Exception e) {
+            return Result.fail("Erro ao remover usuário");
+        }
+    
     }
     
 }

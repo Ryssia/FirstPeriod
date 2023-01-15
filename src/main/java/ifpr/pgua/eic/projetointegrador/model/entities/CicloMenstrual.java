@@ -1,36 +1,60 @@
 package ifpr.pgua.eic.projetointegrador.model.entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CicloMenstrual {
-    private LocalDate dataInicio;
-    private LocalDate dataTermino;
+    private int idCicloMenstrual;
+    private int idUsuario;
+    private LocalDateTime dataInicio;
+    private LocalDateTime dataTermino;
     private String tipoFluxo;
     private String comentarios;
     
-    public CicloMenstrual(LocalDate dataInicio, LocalDate dataTermino, String tipoFluxo, String comentarios) {
+
+    
+    public CicloMenstrual(int idCicloMenstrual, int idUsuario, LocalDateTime dataInicio, LocalDateTime dataTermino,
+            String tipoFluxo, String comentarios) {
+        this.idCicloMenstrual = idCicloMenstrual;
+        this.idUsuario = idUsuario;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
         this.tipoFluxo = tipoFluxo;
         this.comentarios = comentarios;
     }
 
-    public CicloMenstrual(LocalDate dataInicio, LocalDate dataTermino, String tipoFluxo) {
+    public CicloMenstrual( int idUsuario, LocalDateTime dataInicio, LocalDateTime dataTermino,
+        String tipoFluxo, String comentarios) {
+        this.idUsuario = idUsuario;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
         this.tipoFluxo = tipoFluxo;
+        this.comentarios = comentarios;
     }
-    
-    public LocalDate getDataInicio() {
+
+    public int getIdCicloMenstrual() {
+        return idCicloMenstrual;
+    }
+
+    public void setIdCicloMenstrual(int idCicloMenstrual) {
+        this.idCicloMenstrual = idCicloMenstrual;
+    }
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    public LocalDateTime getDataInicio() {
         return dataInicio;
     }
-    public void setDataInicio(LocalDate dataInicio) {
+    public void setDataInicio(LocalDateTime dataInicio) {
         this.dataInicio = dataInicio;
     }
-    public LocalDate getDataTermino() {
+    public LocalDateTime getDataTermino() {
         return dataTermino;
     }
-    public void setDataTermino(LocalDate dataTermino) {
+    public void setDataTermino(LocalDateTime dataTermino) {
         this.dataTermino = dataTermino;
     }
     public String getTipoFluxo() {

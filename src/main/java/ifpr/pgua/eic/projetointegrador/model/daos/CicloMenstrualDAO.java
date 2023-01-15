@@ -9,7 +9,7 @@ import ifpr.pgua.eic.projetointegrador.model.results.Result;
 
 public interface CicloMenstrualDAO {
     //crud
-    Result cadastrar(CicloMenstrual CicloMenstrual);
+    Result cadastrar(CicloMenstrual cicloMenstrual);
     List<CicloMenstrual> listar(Usuario usuario);
     List<CicloMenstrual> listar(Usuario usuario, LocalDate dataInicio, LocalDate dataTermino);
     Result editar(CicloMenstrual cicloMenstrual);
