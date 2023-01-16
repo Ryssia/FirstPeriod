@@ -163,14 +163,49 @@ public class JDBCCicloMenstrualDAO implements CicloMenstrualDAO{
 
     @Override
     public Result editar(CicloMenstrual cicloMenstrual) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            String sql = "UPDATE tb_ciclos_menstruais SET data_inicio = ?, "+
+                        "data_termino = ?, tipo_fluxo = ?, comentario = ? "+
+                        "WHERE id_ciclo_menstrual = ?";
+            PreparedStatement pstm = con.prepareStatement(sql);
+
+            pstm.setTimestamp(1, Timestamp.valueOf(cicloMenstrual.getDataInicio()));
+            pstm.setTimestamp(2, Timestamp.valueOf(cicloMenstrual.getDataTermino()));
+            pstm.setString(3, cicloMenstrual.getTipoFluxo());
+            pstm.setString(4, cicloMenstrual.getComentarios());
+            pstm.setInt(5, cicloMenstrual.getIdCicloMenstrual());
+
+            pstm.executeUpdate();
+            pstm.close();
+            con.close();
+
+            return Result.success("Dados editados!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.success("Erro ao editar dados");
+        }
     }
 
     @Override
     public Result excluir(CicloMenstrual cicloMenstrual) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            String sql = "DELETE FROM tb_ciclos_menstruais WHERE id_ciclo_menstrual = ?"; 
+            PreparedStatement pstm = con.prepareStatement(sql);
+
+            pstm.setInt(1, cicloMenstrual.getIdCicloMenstrual());
+
+            pstm.executeUpdate();
+            pstm.close();
+            con.close();
+
+            return Result.success("Removido com sucesso!");
+
+        } catch (Exception e) {
+            return Result.fail("Erro ao remover ciclo selecionado");
+        }
     }
     
 }
