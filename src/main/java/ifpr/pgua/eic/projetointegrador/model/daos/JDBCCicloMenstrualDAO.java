@@ -115,7 +115,7 @@ public class JDBCCicloMenstrualDAO implements CicloMenstrualDAO{
             
             
         } catch (Exception e) {
-            e.printStackTrace();      //mostrar erro no terminal
+            e.printStackTrace();      //mostrar erro no console
             return null;
         }
     }
@@ -156,7 +156,7 @@ public class JDBCCicloMenstrualDAO implements CicloMenstrualDAO{
             
             
         } catch (Exception e) {
-            e.printStackTrace();      //mostrar erro no terminal
+            e.printStackTrace();      //mostrar erro no console
             return null;
         }
     }
