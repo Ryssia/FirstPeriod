@@ -26,7 +26,8 @@ public class UsuarioRepository {
             return Result.fail("A data não pode estar vazia e não pode ser uma data futura!");
         }
         //email deve conter o @.com  //procurar REGEX (Regular Expression)
-        if(usuario.getEmail().isBlank() || !usuario.getEmail().matches("^[A-Za-z0-9+_\\.\\-]+@(\\.+)$")){
+        
+        if(usuario.getEmail().isBlank() || !usuario.getEmail().matches("^[a-zA-Z0-9_!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&amp;'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
             return Result.fail("O email deve ser no formato padrão. Ex: exemplo@email.com");
         }
         
@@ -37,7 +38,7 @@ public class UsuarioRepository {
     }
 
     public Usuario buscar(String email){    //apenas adm
-        if(!email.isBlank()){
+        if(email.isBlank()){
             return null;
         }
         return dao.buscar(email);

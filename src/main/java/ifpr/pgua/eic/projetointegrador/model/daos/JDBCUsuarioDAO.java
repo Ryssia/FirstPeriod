@@ -41,9 +41,11 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             return Result.success("Usuário cadastrado com sucesso!");
 
         } catch (SQLException e) {
+            e.printStackTrace();
             return Result.fail(e.getMessage()); 
                                   
         } catch(Exception e){
+            e.printStackTrace();
             return Result.fail(e.getMessage());
 
         }
@@ -54,14 +56,12 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
     public Usuario buscar(String email) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            String sql = "SELECT * FROM tb_usuarios tbu WHERE tbu.email_usuario = ?";   //comando que vai selecionar algum item da tabela 
+            String sql = "SELECT * FROM tb_usuarios WHERE email_usuario = ?";   //comando que vai selecionar algum item da tabela 
             PreparedStatement pstm = con.prepareStatement(sql);
 
             pstm.setString(1, email);
 
             ResultSet consulta = pstm.executeQuery();   //guarda o resultado da busca realizada
-            pstm.close();
-            con.close();
 
             //TipoDeRetorno nomeMetodo(TipoDeParametro nomeDoParametro) { implementacao }
             //nomeMetodo(nomeParametro : Tipo) : TipoRetorno
@@ -77,7 +77,9 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
                 return usuario;
             }
-            
+
+            pstm.close();
+            con.close();
 
         } catch (SQLException e) {
             e.printStackTrace();    //printa se houve erro ao executar a busca
@@ -94,8 +96,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             List<Usuario> listaUsuarios = new ArrayList<>();
 
             ResultSet consulta = pstm.executeQuery();   //guarda o resultado da busca realizada
-            pstm.close();
-            con.close();
+            
 
             while(consulta.next()){ //resultSet.next() sempre navega para o primeiro do ResultSet
                 //montar um objeto Usuario com base nos dados vindos da consulta do Banco de Dados
@@ -107,8 +108,11 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
                 
                 //Adiciona o Usuario montado na lista de usuários
                 listaUsuarios.add(usuario);
- 
             }
+            
+            pstm.close();
+            con.close();
+
             return listaUsuarios;
             
 
