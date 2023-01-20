@@ -74,9 +74,12 @@ public class JDBCCicloMenstrualDAO implements CicloMenstrualDAO{
             return Result.success("Ciclo registrado!");
 
         } catch (SQLException e) {
+            e.printStackTrace();
             return Result.fail(e.getMessage()); 
+
                                   
         } catch(Exception e){
+            e.printStackTrace();
             return Result.fail(e.getMessage());
 
         }
@@ -204,6 +207,7 @@ public class JDBCCicloMenstrualDAO implements CicloMenstrualDAO{
             return Result.success("Removido com sucesso!");
 
         } catch (Exception e) {
+            e.printStackTrace();
             return Result.fail("Erro ao remover ciclo selecionado");
         }
     }
