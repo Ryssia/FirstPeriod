@@ -52,4 +52,9 @@ public class UsuarioRepository {
     public Result excluir(Usuario usuario){ //apenas adm
         return dao.excluir(usuario);
     }
+
+    public Usuario logar(String email, LocalDateTime dataNascimento){
+        return dao.logar(email, dataNascimento);
+    }
+    
 }

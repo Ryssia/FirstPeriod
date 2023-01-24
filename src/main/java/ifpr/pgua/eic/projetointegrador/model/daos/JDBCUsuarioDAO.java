@@ -26,6 +26,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
         try {
             Connection con = fabricaConexoes.getConnection();   //declaraçao e inicializaçao
 
+            if(this.buscar(usuario.getEmail()) != null){
+                return Result.fail("Email já cadastrado!");
+            }
+
             String sql = "INSERT INTO tb_usuarios(nome_usuario, email_usuario, data_nascimento) VALUES (?,?,?)";
             PreparedStatement pstm = con.prepareStatement(sql);
 
@@ -164,6 +168,30 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             return Result.fail("Erro ao remover usuário");
         }
     
+    }
+
+    @Override
+    public Usuario logar(String email, LocalDateTime dataNascimento) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            String sql = "SELECT * FROM tb_usuarios WHERE email_usuario = ? AND data_nascimento = ?";
+            PreparedStatement pstm = con.prepareStatement(sql);
+
+            pstm.setString(1, email);
+            pstm.setTimestamp(2, Timestamp.valueOf(dataNascimento));
+            
+            ResultSet consulta = pstm.executeQuery(sql);
+
+            if(consulta.next()){
+                int id = consulta.getInt("id_usuario");
+                String nome = consulta.getString("nome_usuario");
+                Usuario usuario = new Usuario(id, nome, dataNascimento, email);
+                return usuario;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     
 }

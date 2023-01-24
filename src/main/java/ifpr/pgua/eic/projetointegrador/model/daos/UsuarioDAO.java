@@ -1,5 +1,6 @@
 package ifpr.pgua.eic.projetointegrador.model.daos;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.model.entities.Usuario;
@@ -12,5 +13,5 @@ public interface UsuarioDAO {
     List<Usuario> listar();
     Result editar(Usuario usuario);
     Result excluir(Usuario usuario);
-
+    Usuario logar(String email, LocalDateTime dataNascimento);
 }

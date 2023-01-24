@@ -8,7 +8,6 @@ public class Usuario {
     private LocalDateTime dataNascimento;
     private String email;
 
-
     public Usuario(int id, String nome, LocalDateTime dataNascimento, String email) {
         this.id = id;
         this.nome = nome;
