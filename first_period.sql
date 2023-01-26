@@ -22,9 +22,7 @@ create table tb_ciclos_menstruais(
 drop table tb_informacoes if exists;
 create table tb_informacoes(
 	id_informacoes int not NULL auto_increment,
-	id_usuario int not NULL,
 	categoria VARCHAR(255) not NULL,
 	informacoes VARCHAR(512) not NULL,
-	primary key (id_informacoes),
-	foreign key (id_usuario) REFERENCES tb_usuarios(id_usuario)
+	primary key (id_informacoes)
 );

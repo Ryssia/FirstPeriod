@@ -180,7 +180,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             pstm.setString(1, email);
             pstm.setTimestamp(2, Timestamp.valueOf(dataNascimento));
             
-            ResultSet consulta = pstm.executeQuery(sql);
+            ResultSet consulta = pstm.executeQuery();
 
             if(consulta.next()){
                 int id = consulta.getInt("id_usuario");

@@ -27,7 +27,7 @@ public class MainDebug {
 
         Usuario usuario = new Usuario(nome, dataNascimento, email);
 
-        System.out.println(usuarioRepository.salvar(usuario).getMsg());
+        //System.out.println(usuarioRepository.salvar(usuario).getMsg());
 
         usuario = usuarioRepository.buscar("beltrano@gmail.com"); //busca
 
@@ -110,5 +110,14 @@ public class MainDebug {
             System.out.println("Comentários: \t\t\t" + ciclo.getComentarios() );
             System.out.println("====================================");
         }
+
+        Usuario usuarioLogado = usuarioRepository.logar("fulano@gmail.com", LocalDateTime.of(2023, 1, 18, 0, 0, 0));
+
+        if(usuarioLogado != null){
+            System.out.println("Logou!! "  + usuarioLogado.getNome() + " : " + usuarioLogado.getId() );
+        }
+        else
+            System.out.println("Nao logou =[");
     }
+
 }
