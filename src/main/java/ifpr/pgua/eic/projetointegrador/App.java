@@ -11,6 +11,13 @@ import java.io.IOException;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaLogin;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaPrincipal;
 import ifpr.pgua.eic.projetointegrador.model.FabricaConexoes;
+import ifpr.pgua.eic.projetointegrador.model.daos.CicloMenstrualDAO;
+import ifpr.pgua.eic.projetointegrador.model.daos.JDBCCicloMenstrualDAO;
+import ifpr.pgua.eic.projetointegrador.model.daos.JDBCInfoDAO;
+import ifpr.pgua.eic.projetointegrador.model.daos.JDBCUsuarioDAO;
+import ifpr.pgua.eic.projetointegrador.model.daos.UsuarioDAO;
+import ifpr.pgua.eic.projetointegrador.model.repositories.CicloMenstrualRepository;
+import ifpr.pgua.eic.projetointegrador.model.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.utils.Navigator.BaseAppNavigator;
 import ifpr.pgua.eic.projetointegrador.utils.Navigator.ScreenRegistryFXML;
 
@@ -20,16 +27,27 @@ import ifpr.pgua.eic.projetointegrador.utils.Navigator.ScreenRegistryFXML;
  */
 public class App extends BaseAppNavigator {
 
-
+    FabricaConexoes fabricaConexoes;
+    UsuarioDAO usuarioDAO;
+    CicloMenstrualDAO cicloMenstrualDAO;
+    JDBCInfoDAO infoDAO;
+    UsuarioRepository usuarioRepository;
+    CicloMenstrualRepository cicloMenstrualRepository;
+    
     //DEFINIR A FABRICA DE CONEXÕES, DAOS e REPOSITÓRIOS
 
     @Override
     public void init() throws Exception {
-        // TODO Auto-generated method stub
         super.init();
-        
+
+        this.fabricaConexoes = FabricaConexoes.getInstance();
+        this.usuarioDAO = new JDBCUsuarioDAO(fabricaConexoes);
+        this.cicloMenstrualDAO = new JDBCCicloMenstrualDAO(fabricaConexoes);
+        this.infoDAO = new JDBCInfoDAO(fabricaConexoes);
+        this.usuarioRepository = new UsuarioRepository(usuarioDAO);
+        this.cicloMenstrualRepository = new CicloMenstrualRepository(cicloMenstrualDAO);
+
         //INSTANCIAR FABRICA, DAOS E REPOSITÓRIOS
-    
     }
 
     @Override
@@ -48,14 +66,13 @@ public class App extends BaseAppNavigator {
 
     @Override
     public String getAppTitle() {
-        // TODO Auto-generated method stub
         return "Projeto Integrador";
     }
 
     @Override
     public void registrarTelas() {
         registraTela("PRINCIPAL", new ScreenRegistryFXML(getClass(), "fxml/principal.fxml", (o)->new TelaPrincipal()));
-        registraTela("LOGIN", new ScreenRegistryFXML(getClass(), "fxml/login.fxml", (o)->new TelaLogin()));
+        registraTela("LOGIN", new ScreenRegistryFXML(getClass(), "fxml/login.fxml", (o)->new TelaLogin(usuarioRepository)));
         
         //REGISTRAR AS OUTRAS TELAS
 

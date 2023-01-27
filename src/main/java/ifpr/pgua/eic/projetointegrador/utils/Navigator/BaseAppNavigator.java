@@ -101,6 +101,7 @@ public abstract class BaseAppNavigator extends Application{
 
     public final static void changeScreenRegion(String nomeTela, BorderPaneRegion regiao){
         try{
+            System.out.println("tENTANDO MUDAR A TELA: " + nomeTela + " " + regiao);
             ScreenRegistry screenPiece = pegaTela(nomeTela);
             BorderPane borderPane = (BorderPane) root.getChildren().get(root.getChildren().size()-1);
             Parent root = screenPiece.getRoot();

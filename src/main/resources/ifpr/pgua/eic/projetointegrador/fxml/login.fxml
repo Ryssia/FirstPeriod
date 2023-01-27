@@ -8,18 +8,34 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="600.0" prefWidth="800.0" spacing="10.0"
-    xmlns="http://javafx.com/javafx/18" 
-    xmlns:fx="http://javafx.com/fxml/1"
+    xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="ifpr.pgua.eic.projetointegrador.controllers.TelaLogin">
     
     <children>
-        <TextField fx:id="tfEmail" promptText="Email:"/>
-        <TextField fx:id="tfDataNascimento" promptText="Data de nascimento:" /> <!--Procurar componente de Data para colocar aqui-->
-        <Button fx:id="btnLogar" text="Logar" />
-        <Button fx:id="btnCadastrar" text="Cadastrar" />
-    </children>
-
+    <MenuBar VBox.vgrow="NEVER" />
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" layoutX="195.0" layoutY="49.0" style="&#10;" text="Informacoes de login" textAlignment="CENTER" wrapText="false">
+          <font>
+            <Font size="18.0" />
+          </font>
+        </Label>
+            <TextField fx:id="tfEmail" layoutX="195.0" layoutY="113.0" prefWidth="168.0" promptText="Email" />
+            <DatePicker fx:id="dpDataNascimento" layoutX="195.0" layoutY="158.0" prefHeight="18.0" prefWidth="168.0" promptText="Data de Nascimento" />
+            <Button onAction="#onActionLogar" layoutX="259.0" layoutY="213.0" mnemonicParsing="false" text="Logar" />
+            <Button onAction="#onActionCadastrar" layoutX="195.0" layoutY="280.0" mnemonicParsing="false" prefWidth="168.0" text="Ainda não possuo cadastro" />
+      </children>
+    </AnchorPane>
+  </children>
 </VBox>
 

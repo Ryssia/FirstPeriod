@@ -1,12 +1,15 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 public class TelaPrincipal extends BaseController {
     
-
     @FXML
     private void carregarClientes(){
         App.changeScreenRegion("CLIENTES", BorderPaneRegion.CENTER);
@@ -18,20 +21,8 @@ public class TelaPrincipal extends BaseController {
     }
 
     @FXML
-    private void carregarVendas(){
-        App.changeScreenRegion("VENDAS", BorderPaneRegion.CENTER);
-    }
-
-    @FXML
-    private void carregarNovaVenda(){
-        App.changeScreenRegion("NOVAVENDA", BorderPaneRegion.CENTER);
-    }
-
-    @FXML
-    private void carregarTelaLogin(){
-        System.out.println("Carregando tela de login");
+    private void abrirTelaLogin(){
         App.changeScreenRegion("LOGIN", BorderPaneRegion.CENTER);
     }
-
 
 }
