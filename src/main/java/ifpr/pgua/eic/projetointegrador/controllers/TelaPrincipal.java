@@ -27,6 +27,11 @@ public class TelaPrincipal extends BaseController {
         App.changeScreenRegion("NOVAVENDA", BorderPaneRegion.CENTER);
     }
 
+    @FXML
+    private void carregarTelaLogin(){
+        System.out.println("Carregando tela de login");
+        App.changeScreenRegion("LOGIN", BorderPaneRegion.CENTER);
+    }
 
 
 }

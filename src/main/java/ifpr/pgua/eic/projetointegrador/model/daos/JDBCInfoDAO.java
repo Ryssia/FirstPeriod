@@ -73,7 +73,6 @@ public class JDBCInfoDAO {
             }
 
             return categorias;
-
         } catch (Exception e) {
             e.printStackTrace();
         }

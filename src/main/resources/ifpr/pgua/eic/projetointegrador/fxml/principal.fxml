@@ -25,6 +25,7 @@
          <Button prefHeight="40.0" prefWidth="100.0" text="Produtos" />
          <Button prefHeight="40.0" prefWidth="100.0" text="Vendas" />
          <Button prefHeight="40.0" prefWidth="100.0" text="Nova Venda" />
+         <Button prefHeight="40.0" prefWidth="100.0" text="TELA LOGIN BOLADONAA" onAction="#carregarTelaLogin"/>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
