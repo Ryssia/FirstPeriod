@@ -3,8 +3,10 @@ package ifpr.pgua.eic.projetointegrador.controllers;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.model.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.model.repositories.UsuarioRepository;
+import ifpr.pgua.eic.projetointegrador.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -45,7 +47,7 @@ public class TelaLogin extends BaseController{
 
     @FXML
     private void onActionCadastrar(){
-        
+        App.changeScreenRegion("CADASTRO", BorderPaneRegion.CENTER); //abre tela Cadastro
     }
 
 }
