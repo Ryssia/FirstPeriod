@@ -22,10 +22,8 @@
             </children>
          </Pane>
          <Button prefHeight="40.0" prefWidth="100.0" text="Login" onAction="#abrirTelaLogin" />
-         <!-- <Button prefHeight="40.0" prefWidth="100.0" text="Clientes" />
-         <Button prefHeight="40.0" prefWidth="100.0" text="Produtos" />
-         <Button prefHeight="40.0" prefWidth="100.0" text="Vendas" />
-         <Button prefHeight="40.0" prefWidth="100.0" text="Nova Venda" /> -->
+         <Button prefHeight="40.0" prefWidth="100.0" text="Ciclos Menstruais" />
+         <Button prefHeight="40.0" prefWidth="100.0" text="Informações" />
          
          <BorderPane.margin>
             <Insets />

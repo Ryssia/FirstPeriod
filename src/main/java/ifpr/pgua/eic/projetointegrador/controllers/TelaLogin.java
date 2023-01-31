@@ -50,4 +50,5 @@ public class TelaLogin extends BaseController{
         App.changeScreenRegion("CADASTRO", BorderPaneRegion.CENTER); //abre tela Cadastro
     }
 
+
 }
