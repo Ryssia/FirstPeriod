@@ -19,14 +19,24 @@
 
     <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
         <children>
-            <Label layoutX="160.0" layoutY="41.0" prefHeight="53.0" prefWidth="158.0" text="Informacões sobre:">
+            <!-- <Label layoutX="160.0" layoutY="41.0" prefHeight="53.0" prefWidth="158.0" text="Informacões sobre:">
                 <font>
                     <Font size="18.0" />
                 </font>
-            </Label>
-            <Button layoutX="189.0" layoutY="122.0" mnemonicParsing="false" text="Ciclo Menstrual" />
-            <Button layoutX="197.0" layoutY="166.0" mnemonicParsing="false" text="Absorventes" />
-            <Button layoutX="212.0" layoutY="208.0" mnemonicParsing="false" text="Cólicas" />
+            </Label> -->
+            <VBox layoutX="0" prefHeight="600.0" prefWidth="200.0" alignment="TOP_CENTER" spacing="7.0">
+                <Button prefWidth="100.0" text="Ciclo Menstrual" />
+                <Button prefWidth="100.0" text="Absorventes" />
+                <Button prefWidth="100.0" text="Cólicas" />
+            </VBox>
+
+            <VBox layoutX="200" prefHeight="600.0" prefWidth="600.0">
+                <Label  prefHeight="53.0" prefWidth="158.0" text="Informacões sobre:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </VBox>
         </children>
     </Pane>
 

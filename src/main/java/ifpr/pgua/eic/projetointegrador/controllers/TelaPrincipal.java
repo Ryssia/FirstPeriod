@@ -25,5 +25,17 @@ public class TelaPrincipal extends BaseController {
         App.changeScreenRegion("LOGIN", BorderPaneRegion.CENTER);
     }
 
+    @FXML
+    private void abrirTelaCicloMenstrual(){
+        // TODO  Auto-generated method stub
+        //App.changeScreenRegion("CICLOMENSTRUAL", BorderPaneRegion.CENTER);
+    }
+
+    @FXML
+    private void abrirTelaInfo(){
+        App.changeScreenRegion("INFO", BorderPaneRegion.CENTER);
+    }
+
+
     
 }
