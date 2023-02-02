@@ -1,12 +1,9 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 
 public class TelaPrincipal extends BaseController {
     
