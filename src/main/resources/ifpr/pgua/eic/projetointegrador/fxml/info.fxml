@@ -29,8 +29,8 @@
             
             <VBox layoutX="0" prefHeight="600.0" prefWidth="150.0" alignment="TOP_CENTER" spacing="7.0">
                 <Button prefWidth="150.0" text="Ciclo Menstrual" onAction="#onActionCiclo"/>
-                <Button prefWidth="150.0" text="Absorventes"/>
-                <Button prefWidth="150.0" text="Cólicas" />
+                <Button prefWidth="150.0" text="Absorventes" onAction="#onActionAbs"/>
+                <Button prefWidth="150.0" text="Cólicas" onAction="#onActionColicas"/>
             </VBox>
             <VBox layoutX="151" prefHeight="600.0" prefWidth="600.0">
                 <HBox prefHeight="100.0" alignment="CENTER" >
@@ -42,9 +42,7 @@
                 </HBox>
                 <VBox>
                     <HBox fx:id="hbInfo">
-                        <!-- <VBox>
-                            <Label text="Informações pertinentes sobre menstruação" />
-                        </VBox> -->
+                    
                     </HBox>
                     
                 </VBox>

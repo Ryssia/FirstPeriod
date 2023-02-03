@@ -28,10 +28,11 @@ public class JDBCInfoDAO {
             List<String> informacoes = new ArrayList<>();
 
             while(consulta.next()){
-                informacoes.add(consulta.getString("informacoes"));
+                String info = consulta.getString("informacoes");
+                info += "&" + consulta.getString("img");
+                informacoes.add(info);
             }
             return informacoes;
-            
         } catch (Exception e) {
             e.printStackTrace();
         }

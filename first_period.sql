@@ -24,5 +24,6 @@ create table tb_informacoes(
 	id_informacoes int not NULL auto_increment,
 	categoria VARCHAR(255) not NULL,
 	informacoes VARCHAR(512) not NULL,
+	img VARCHAR(100) NULL DEFAULT NULL,
 	primary key (id_informacoes)
 );
