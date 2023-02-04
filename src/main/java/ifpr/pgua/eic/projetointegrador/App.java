@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import ifpr.pgua.eic.projetointegrador.controllers.TelaCadastro;
+import ifpr.pgua.eic.projetointegrador.controllers.TelaCiclo;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaHome;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaInfo;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaLogin;
@@ -79,6 +80,7 @@ public class App extends BaseAppNavigator {
         registraTela("CADASTRO", new ScreenRegistryFXML(getClass(), "fxml/cadastro.fxml", (o)->new TelaCadastro(usuarioRepository)));
         registraTela("HOME", new ScreenRegistryFXML(getClass(), "fxml/home.fxml", (o)->new TelaHome()));
         registraTela("INFO", new ScreenRegistryFXML(getClass(), "fxml/info.fxml", (o)->new TelaInfo(infoDAO)));
+        registraTela("CADASTROCICLO", new ScreenRegistryFXML(getClass(), "fxml/cadciclo.fxml", (o)->new TelaCiclo(cicloMenstrualRepository)));
         
         //REGISTRAR AS OUTRAS TELAS
 

@@ -29,7 +29,7 @@
             <TextField fx:id="tfEmail" layoutX="195.0" layoutY="113.0" prefWidth="168.0" promptText="Email" />
             <DatePicker fx:id="dpDataNascimento" layoutX="195.0" layoutY="158.0" prefHeight="18.0" prefWidth="168.0" promptText="Data de Nascimento" />
             <Button onAction="#onActionLogar" layoutX="259.0" layoutY="213.0" mnemonicParsing="false" text="Logar" />
-            <Button onAction="#onActionCadastrar" layoutX="195.0" layoutY="280.0" mnemonicParsing="false" prefWidth="168.0" text="Ainda não possuo cadastro" />
+            <Button onAction="#onActionCadastrar" layoutX="195.0" layoutY="280.0" mnemonicParsing="false" prefWidth="168.0" text="Ainda não possui cadastro" />
       </children>
     </AnchorPane>
   </children>

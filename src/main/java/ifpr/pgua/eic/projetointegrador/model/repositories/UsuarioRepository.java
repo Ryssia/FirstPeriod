@@ -9,6 +9,8 @@ import ifpr.pgua.eic.projetointegrador.model.results.Result;
 
 public class UsuarioRepository {
 
+    private static Usuario usuarioLogado = null; //usuario logado no sistema
+
     private UsuarioDAO dao; //DAO Data Access Object
 
     public UsuarioRepository(UsuarioDAO dao) {
@@ -54,7 +56,12 @@ public class UsuarioRepository {
     }
 
     public Usuario logar(String email, LocalDateTime dataNascimento){
-        return dao.logar(email, dataNascimento);
+        usuarioLogado = dao.logar(email, dataNascimento);
+        return usuarioLogado;
     }
     
+
+    public static Usuario getUsuarioLogado(){
+        return usuarioLogado;
+    }
 }

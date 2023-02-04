@@ -7,6 +7,7 @@ import ifpr.pgua.eic.projetointegrador.utils.Categoria;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -63,14 +64,15 @@ public class TelaInfo extends BaseController{
                 else{
                     VBox postIt = new VBox();
                     Label label = new Label();
+                    Image img = new Image("@../img/i"+tokens[1]); //verificar depois caminho da pasta para acesso da img
+                    ImageView imageView = new ImageView(img);
                     label.setText(info);
                     postIt.getChildren().add(label);
                     hbInfo.getChildren().add(postIt);
 
-                    // VBox vbImg = new VBox();
-                    // Image img = new Image("@../../../../"+tokens[1]); //verificar depois caminho da pasta para acesso da img
-                    // vbImg.getChildren().add(img);
-                    // hbInfo.getChildren().add(vbImg);
+                    VBox vbImg = new VBox();
+                    vbImg.getChildren().add(imageView);
+                    hbInfo.getChildren().add(vbImg);
 
                     loop++;
                 }
