@@ -7,23 +7,13 @@ import javafx.fxml.FXML;
 public class TelaPrincipal extends BaseController {
     
     @FXML
-    private void carregarClientes(){
-        App.changeScreenRegion("CLIENTES", BorderPaneRegion.CENTER);
-    }
-
-    @FXML
-    private void carregarProdutos(){
-        App.changeScreenRegion("PRODUTOS", BorderPaneRegion.CENTER);
-    }
-
-    @FXML
     private void abrirTelaLogin(){
         App.changeScreenRegion("LOGIN", BorderPaneRegion.CENTER);
     }
 
     @FXML
     private void abrirTelaCicloMenstrual(){
-        App.changeScreenRegion("CADASTROCICLO", BorderPaneRegion.CENTER);
+        App.changeScreenRegion("LISTARCICLO", BorderPaneRegion.CENTER);
     }
 
     @FXML

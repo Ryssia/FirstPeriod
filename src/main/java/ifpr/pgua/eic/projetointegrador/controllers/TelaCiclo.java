@@ -46,4 +46,6 @@ public class TelaCiclo {
         CicloMenstrual cicloMenstrual = new CicloMenstrual(idUsuario, dataInicio, dataTermino, tipoFluxo, comentarios);
         cicloMenstrualRepository.cadastrar(cicloMenstrual);
     }
+
+    
 }

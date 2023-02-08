@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.projetointegrador.model.entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class CicloMenstrual {
     private int idCicloMenstrual;
@@ -68,4 +69,11 @@ public class CicloMenstrual {
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
+
+    public String toString(){
+        return  " DATA INICIO " + this.getDataInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n" +
+                " DATA TERMINO " + this.getDataTermino().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n" +
+                " TIPO FLUXO " + this.getTipoFluxo() + "\n" +
+                " COMENTARIOS " + this.getComentarios();
+        }
 }

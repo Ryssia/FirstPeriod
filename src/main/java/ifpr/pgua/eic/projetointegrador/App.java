@@ -12,6 +12,7 @@ import ifpr.pgua.eic.projetointegrador.controllers.TelaCadastro;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaCiclo;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaHome;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaInfo;
+import ifpr.pgua.eic.projetointegrador.controllers.TelaListCiclo;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaLogin;
 import ifpr.pgua.eic.projetointegrador.controllers.TelaPrincipal;
 import ifpr.pgua.eic.projetointegrador.model.FabricaConexoes;
@@ -81,6 +82,7 @@ public class App extends BaseAppNavigator {
         registraTela("HOME", new ScreenRegistryFXML(getClass(), "fxml/home.fxml", (o)->new TelaHome()));
         registraTela("INFO", new ScreenRegistryFXML(getClass(), "fxml/info.fxml", (o)->new TelaInfo(infoDAO)));
         registraTela("CADASTROCICLO", new ScreenRegistryFXML(getClass(), "fxml/cadciclo.fxml", (o)->new TelaCiclo(cicloMenstrualRepository)));
+        registraTela("LISTARCICLO", new ScreenRegistryFXML(getClass(), "fxml/ciclo.fxml", (o)->new TelaListCiclo(cicloMenstrualRepository)));
         
         //REGISTRAR AS OUTRAS TELAS
 
