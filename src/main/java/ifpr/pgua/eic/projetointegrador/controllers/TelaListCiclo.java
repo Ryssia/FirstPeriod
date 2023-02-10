@@ -1,5 +1,6 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
+import java.io.ObjectInputStream.GetField;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -41,11 +42,22 @@ public class TelaListCiclo implements Initializable{
 
     @FXML
     public void onActionEditar(){
-
+        CicloMenstrualRepository.selecionado = lvCiclos.getSelectionModel().getSelectedItem();
+        App.changeScreenRegion("CADASTROCICLO", BorderPaneRegion.CENTER);
+        
     }
+
+    @FXML
+    public void onActionExcluir(){
+        //verificar objeto selecionado para impedir nullpointer
+        cicloMenstrualRepository.excluir(lvCiclos.getSelectionModel().getSelectedItem());
+        //atualizar a lista de ciclos para que o item excluido não apareça mais
+    }
+
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        CicloMenstrualRepository.selecionado = null;
         listarCiclo();
     }
 }

@@ -38,6 +38,8 @@ public class TelaCadastro extends BaseController{
         System.out.println(resultado.getMsg());
     }
 
+    @FXML
+
 }
 
     

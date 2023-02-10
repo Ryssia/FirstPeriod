@@ -12,6 +12,8 @@ public class CicloMenstrualRepository {
 
     private CicloMenstrualDAO dao;
 
+    public static CicloMenstrual selecionado;
+
     public CicloMenstrualRepository(CicloMenstrualDAO dao) {
         this.dao = dao;
     }

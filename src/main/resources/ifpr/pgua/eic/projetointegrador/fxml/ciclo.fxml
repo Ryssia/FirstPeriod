@@ -32,6 +32,9 @@
         <HBox alignment="CENTER_RIGHT">
             <Button onAction="#onActionEditar" text="Editar"/>
         </HBox>
+        <HBox alignment="CENTER_LEFT">
+            <Button onAction="#onActionExcluir" text="Excluir"/>
+        </HBox>
 
 
     </children>

@@ -1,17 +1,20 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
+import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.model.entities.CicloMenstrual;
 import ifpr.pgua.eic.projetointegrador.model.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.model.repositories.CicloMenstrualRepository;
 import ifpr.pgua.eic.projetointegrador.model.repositories.UsuarioRepository;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class TelaCiclo {
+public class TelaCiclo implements Initializable{
 
     private CicloMenstrualRepository cicloMenstrualRepository;
 
@@ -39,13 +42,39 @@ public class TelaCiclo {
             return;
         }
         int idUsuario = UsuarioRepository.getUsuarioLogado().getId();
+        //pega valores da tela
         LocalDateTime dataInicio = LocalDateTime.of(dpDataIni.getValue().getYear(), dpDataIni.getValue().getMonth(), dpDataIni.getValue().getDayOfMonth(), 0, 0, 0);
         LocalDateTime dataTermino = LocalDateTime.of(dpDataTerm.getValue().getYear(), dpDataTerm.getValue().getMonth(), dpDataTerm.getValue().getDayOfMonth(), 0, 0, 0);;
         String tipoFluxo = tfFluxo.getText();
         String comentarios = taComentarios.getText();
-        CicloMenstrual cicloMenstrual = new CicloMenstrual(idUsuario, dataInicio, dataTermino, tipoFluxo, comentarios);
-        cicloMenstrualRepository.cadastrar(cicloMenstrual);
+
+        if(CicloMenstrualRepository.selecionado == null){       //só habilita cadastro se não houver nada selecionado
+            CicloMenstrual cicloMenstrual = new CicloMenstrual(idUsuario, dataInicio, dataTermino, tipoFluxo, comentarios);
+            cicloMenstrualRepository.cadastrar(cicloMenstrual);
+        }
+        else{
+            CicloMenstrualRepository.selecionado.setDataInicio(dataInicio);
+            CicloMenstrualRepository.selecionado.setDataTermino(dataTermino);
+            CicloMenstrualRepository.selecionado.setTipoFluxo(tipoFluxo);
+            CicloMenstrualRepository.selecionado.setComentarios(comentarios); 
+            cicloMenstrualRepository.editar(CicloMenstrualRepository.selecionado);
+            CicloMenstrualRepository.selecionado = null;
+
+        }
+        
     }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        if(CicloMenstrualRepository.selecionado != null){       //popula a tela do editar SE tiver item selecionado
+            dpDataIni.setValue(CicloMenstrualRepository.selecionado.getDataInicio().toLocalDate());
+            dpDataTerm.setValue(CicloMenstrualRepository.selecionado.getDataTermino().toLocalDate());
+            tfFluxo.setText(CicloMenstrualRepository.selecionado.getTipoFluxo());
+            taComentarios.setText(CicloMenstrualRepository.selecionado.getComentarios());
+        }
+    }
+
+
 
     
 }

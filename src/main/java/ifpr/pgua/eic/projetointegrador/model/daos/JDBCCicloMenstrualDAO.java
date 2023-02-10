@@ -168,7 +168,7 @@ public class JDBCCicloMenstrualDAO implements CicloMenstrualDAO{
         try {
             Connection con = fabricaConexoes.getConnection();
             String sql = "UPDATE tb_ciclos_menstruais SET data_inicio = ?, "+
-                        "data_termino = ?, tipo_fluxo = ?, comentario = ? "+
+                        "data_termino = ?, tipo_fluxo = ?, comentarios = ? "+
                         "WHERE id_ciclo_menstrual = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
 
