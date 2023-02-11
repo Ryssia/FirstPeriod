@@ -36,12 +36,12 @@ public class TelaLogin extends BaseController{
         if(usuario == null){
             System.out.println("");
 
-            //Quaisquer rotinas que serão executadas ao falha de autenticação serão colocadas aqui
-            //Exemplo: exibir uma mensagem de erro na tela
+            //pop alert
             lbErro.setText("Usuário ou senha inválidos");
         }
         else{
-            System.out.println(usuario);
+            App.changeScreenRegion("HOME", BorderPaneRegion.CENTER);
+            System.out.println(usuario);    //tirar
         }
     }
 

@@ -64,7 +64,8 @@ public class TelaInfo extends BaseController{
                 else{
                     VBox postIt = new VBox();
                     Label label = new Label();
-                    Image img = new Image("@../img/i"+tokens[1]); //verificar depois caminho da pasta para acesso da img
+                    //descobrir como carregar uma imagem no JavaFX/Java e colocar dentro da pasta resources
+                    Image img = new Image(getClass().getResourceAsStream("src/main/resources/ifpr/pgua/eic/projetointegrador/img/img001.jpg")); //verificar depois caminho da pasta para acesso da img
                     ImageView imageView = new ImageView(img);
                     label.setText(info);
                     postIt.getChildren().add(label);

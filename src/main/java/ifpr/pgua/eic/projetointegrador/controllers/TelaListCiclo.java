@@ -49,9 +49,9 @@ public class TelaListCiclo implements Initializable{
 
     @FXML
     public void onActionExcluir(){
-        //verificar objeto selecionado para impedir nullpointer
+        //"verificar objeto selecionado" para impedir "null"pointer
         cicloMenstrualRepository.excluir(lvCiclos.getSelectionModel().getSelectedItem());
-        //atualizar a lista de ciclos para que o item excluido não apareça mais
+        //"atualizar a lista" de ciclos para que o item excluido não apareça mais
     }
 
 
