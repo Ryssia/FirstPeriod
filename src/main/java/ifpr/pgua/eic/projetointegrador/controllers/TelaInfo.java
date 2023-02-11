@@ -16,7 +16,7 @@ public class TelaInfo extends BaseController{
     private JDBCInfoDAO jdbcInfoDAO;
 
     @FXML
-    private HBox hbInfo;
+    private VBox vbInfo;
 
     public TelaInfo(JDBCInfoDAO jdbcInfoDAO) {
         this.jdbcInfoDAO = jdbcInfoDAO;
@@ -38,48 +38,19 @@ public class TelaInfo extends BaseController{
     }
 
     private void montaInformacoes(List<String> informacoes){
-        int loop = 1;
-        hbInfo.getChildren().clear();
+        vbInfo.getChildren().clear();
 
         for(String info: informacoes){
-            String[] tokens = info.split("&");  //fraciona a String no ponto &
-            if(tokens.length == 1){
-                VBox postIt = new VBox();
-                Label label = new Label();
-                label.setText(tokens[0]);
-                postIt.getChildren().add(label);
-                hbInfo.getChildren().add(postIt);
-            }
-            else if(tokens.length == 2){
-                if(loop%2 == 0){
-                    //aqui vai a imagem
-                    
-                    VBox postIt = new VBox();
-                    Label label = new Label();
-                    label.setText(info);
-                    postIt.getChildren().add(label);
-                    hbInfo.getChildren().add(postIt);
-                    loop++;
-                }
-                else{
-                    VBox postIt = new VBox();
-                    Label label = new Label();
-                    //descobrir como carregar uma imagem no JavaFX/Java e colocar dentro da pasta resources
-                    Image img = new Image(getClass().getResourceAsStream("src/main/resources/ifpr/pgua/eic/projetointegrador/img/img001.jpg")); //verificar depois caminho da pasta para acesso da img
-                    ImageView imageView = new ImageView(img);
-                    label.setText(info);
-                    postIt.getChildren().add(label);
-                    hbInfo.getChildren().add(postIt);
+            VBox postIt = new VBox();
+            Label label = new Label();
 
-                    VBox vbImg = new VBox();
-                    vbImg.getChildren().add(imageView);
-                    hbInfo.getChildren().add(vbImg);
+            label.setText(info);
+            label.setWrapText(true);
+            postIt.setPrefWidth(400.0);
 
-                    loop++;
-                }
-                
-            }
-           
+            postIt.getChildren().add(label);
+            vbInfo.getChildren().add(postIt);
+            
         }
     }
 }

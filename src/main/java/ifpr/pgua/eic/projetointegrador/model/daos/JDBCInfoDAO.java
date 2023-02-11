@@ -29,7 +29,6 @@ public class JDBCInfoDAO {
 
             while(consulta.next()){
                 String info = consulta.getString("informacoes");
-                info += "&" + consulta.getString("img");
                 informacoes.add(info);
             }
             return informacoes;

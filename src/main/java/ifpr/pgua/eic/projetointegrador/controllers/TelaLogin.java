@@ -40,8 +40,8 @@ public class TelaLogin extends BaseController{
             lbErro.setText("Usuário ou senha inválidos");
         }
         else{
+            App.pushScreen("PRINCIPAL");
             App.changeScreenRegion("HOME", BorderPaneRegion.CENTER);
-            System.out.println(usuario);    //tirar
         }
     }
 

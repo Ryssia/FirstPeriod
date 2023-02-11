@@ -21,9 +21,9 @@
                </Label>
             </children>
          </Pane>
-         <Button prefHeight="40.0" prefWidth="100.0" text="Login" onAction="#abrirTelaLogin" />
-         <Button prefHeight="40.0" prefWidth="100.0" text="Ciclos Menstruais" onAction="#abrirTelaCicloMenstrual"/>
-         <Button prefHeight="40.0" prefWidth="100.0" text="Informações" onAction="#abrirTelaInfo"/>
+         <Button fx:id="btTelaLogin" prefHeight="40.0" prefWidth="100.0" text="Login" onAction="#abrirTelaLogin" />
+         <Button fx:id="btTelaCiclo" prefHeight="40.0" prefWidth="100.0" text="Ciclos Menstruais" onAction="#abrirTelaCicloMenstrual"/>
+         <Button fx:id="btTelaInfo" prefHeight="40.0" prefWidth="100.0" text="Informações" onAction="#abrirTelaInfo"/>
          
          <BorderPane.margin>
             <Insets />

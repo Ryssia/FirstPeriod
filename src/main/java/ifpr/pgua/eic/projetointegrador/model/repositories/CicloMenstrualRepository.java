@@ -21,6 +21,7 @@ public class CicloMenstrualRepository {
     public Result cadastrar(CicloMenstrual cicloMenstrual){
         if(cicloMenstrual.getDataInicio() == null || cicloMenstrual.getDataTermino() == null){
             return Result.fail("As datas não podem ser nulas!");
+            
         }
         else if(!cicloMenstrual.getDataInicio().isBefore(cicloMenstrual.getDataTermino()) || !cicloMenstrual.getDataTermino().isAfter(cicloMenstrual.getDataInicio())){
             return Result.fail("A data de início não pode ser depois da data de término e a data de término não pode ser antes da data de início");

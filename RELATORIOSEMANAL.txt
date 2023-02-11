@@ -1,0 +1,21 @@
+Relatório de atividades 
+
+Semana do dia 09/01
+Início do projeto. Criação das classes e devidas DAOS, do banco de dados.
+Criação de JDBCUsuarioDAO, métodos buscar, listar, editar.
+Inicio da Criação do JDBCCicloMenstrual
+
+Semana do dia 15/01
+Métodos listar, editar e excluir do JDBCCicloMenstrual
+Criação dos Repositorios
+
+Semana do dia 22/01
+Criação do método logar, do JDBCInfoDAO e início das configurações nos arquivos FXML
+Conclusão das telas login, cadastro
+
+Semana do dia 29/01
+Continuação nas atividades das telas
+
+Semana do dia 05/02
+Métodos listar, editar e excluir ciclos menstruais e verificacões do funcionamento das telas
+

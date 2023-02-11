@@ -61,8 +61,6 @@ public class App extends BaseAppNavigator {
 
     }
 
-
-
     @Override
     public String getHome() {
         // TODO Auto-generated method stub
