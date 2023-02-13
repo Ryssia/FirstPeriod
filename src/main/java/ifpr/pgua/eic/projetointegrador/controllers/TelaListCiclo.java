@@ -13,7 +13,9 @@ import ifpr.pgua.eic.projetointegrador.model.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 
 public class TelaListCiclo implements Initializable{
 
@@ -43,15 +45,22 @@ public class TelaListCiclo implements Initializable{
     @FXML
     public void onActionEditar(){
         CicloMenstrualRepository.selecionado = lvCiclos.getSelectionModel().getSelectedItem();
-        App.changeScreenRegion("CADASTROCICLO", BorderPaneRegion.CENTER);
-        
+        if(CicloMenstrualRepository.selecionado == null){
+
+            Alert popAlert = new Alert(Alert.AlertType.ERROR);
+            popAlert.setHeaderText("Nenhum ciclo selecionado para edição!");
+            popAlert.show(); 
+        }
+        else{
+            App.changeScreenRegion("CADASTROCICLO", BorderPaneRegion.CENTER);
+        }
     }
 
     @FXML
     public void onActionExcluir(){
         //"verificar objeto selecionado" para impedir "null"pointer
         cicloMenstrualRepository.excluir(lvCiclos.getSelectionModel().getSelectedItem());
-        //"atualizar a lista" de ciclos para que o item excluido não apareça mais
+        listarCiclo();
     }
 
 

@@ -6,15 +6,21 @@ import java.util.ResourceBundle;
 
 import com.google.protobuf.Empty;
 
+
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.model.entities.CicloMenstrual;
 import ifpr.pgua.eic.projetointegrador.model.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.model.repositories.CicloMenstrualRepository;
 import ifpr.pgua.eic.projetointegrador.model.repositories.UsuarioRepository;
+import ifpr.pgua.eic.projetointegrador.model.results.Result;
+import ifpr.pgua.eic.projetointegrador.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class TelaCiclo implements Initializable{
 
@@ -44,6 +50,9 @@ public class TelaCiclo implements Initializable{
         String tipoFluxo = "";
         String comentarios = "";
 
+        Alert popAlert = new Alert(Alert.AlertType.NONE);
+        Result pop;
+
         if(usuarioLogado == null){
             System.out.println("Usuário não logado");
             return;
@@ -57,13 +66,17 @@ public class TelaCiclo implements Initializable{
             tipoFluxo = tfFluxo.getText();
             comentarios = taComentarios.getText();
 
-            //pop alert dados nulos
         }
 
 
         if(CicloMenstrualRepository.selecionado == null){       //só habilita cadastro se não houver nada selecionado
             CicloMenstrual cicloMenstrual = new CicloMenstrual(idUsuario, dataInicio, dataTermino, tipoFluxo, comentarios);
-            cicloMenstrualRepository.cadastrar(cicloMenstrual);
+            pop = cicloMenstrualRepository.cadastrar(cicloMenstrual);
+            
+            popAlert.setAlertType(AlertType.INFORMATION);
+            popAlert.setHeaderText(pop.getMsg());
+            popAlert.show();
+            App.changeScreenRegion("LISTARCICLO", BorderPaneRegion.CENTER);
         }
         else{
             CicloMenstrualRepository.selecionado.setDataInicio(dataInicio);
@@ -72,7 +85,7 @@ public class TelaCiclo implements Initializable{
             CicloMenstrualRepository.selecionado.setComentarios(comentarios); 
             cicloMenstrualRepository.editar(CicloMenstrualRepository.selecionado);
             CicloMenstrualRepository.selecionado = null;
-
+            App.changeScreenRegion("LISTARCICLO", BorderPaneRegion.CENTER);
         }
         
     }
