@@ -1,0 +1,27 @@
+.button{
+    -fx-color:#bcccec;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.background{
+    -fx-background-image: url(https://i.pinimg.com/originals/42/0d/65/420d659e62c20c15d020c6aaf02d084a.png);
+    -fx-background-position: center center;
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
+
+/*  
+https://i.pinimg.com/564x/3c/ff/a4/3cffa4b6e68369a01fc4aac04cb6e49e.jpg manchadinho
+
+
+
+https://i.pinimg.com/564x/74/e1/70/74e170b0ba6330ec7ad0c9e688ba17d1.jpg nuvenzinha
+
+https://www.theme-junkie.com/wp-content/uploads/Clean-Tumblr-Background-3.jpg macarron
+
+https://i.pinimg.com/736x/44/8b/87/448b873dc0532ec6ecdf0e1021375718.jpg
+
+
+#8dd6f7 azul pastel
+*/

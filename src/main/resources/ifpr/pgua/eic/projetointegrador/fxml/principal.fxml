@@ -8,9 +8,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.TelaPrincipal">
+<BorderPane styleClass="background" prefHeight="600" prefWidth="800" 
+xmlns="http://javafx.com/javafx/18" 
+xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="ifpr.pgua.eic.projetointegrador.controllers.TelaPrincipal"
+stylesheets="@../css/styles.css">
 
-   <left>
+   <left >
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="155.0" spacing="10.0">
          <Pane prefHeight="78.0" prefWidth="135.0">
             <children>

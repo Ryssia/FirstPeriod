@@ -22,13 +22,13 @@
                     <HBox alignment="CENTER" prefHeight="100.0">
                         <Label text="Informacões sobre:">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="18.0" name="System Bold"/>
                             </font>
                         </Label>
                     </HBox>
                     <VBox>
                         <VBox fx:id="vbInfo">
-                        
+                            
                         </VBox>
                     </VBox>
                 </VBox>

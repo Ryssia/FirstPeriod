@@ -69,7 +69,7 @@ public class App extends BaseAppNavigator {
 
     @Override
     public String getAppTitle() {
-        return "Projeto Integrador";
+        return "FirstPeriod";
     }
 
     @Override
