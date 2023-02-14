@@ -6,9 +6,6 @@ import ifpr.pgua.eic.projetointegrador.model.daos.JDBCInfoDAO;
 import ifpr.pgua.eic.projetointegrador.utils.Categoria;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class TelaInfo extends BaseController{
@@ -40,7 +37,7 @@ public class TelaInfo extends BaseController{
     private void montaInformacoes(List<String> informacoes){
         vbInfo.getChildren().clear();
 
-        for(String info: informacoes){
+        for(String info: informacoes){      //laço que cria componentes na tela para cada informação
             VBox postIt = new VBox();
             Label label = new Label();
 

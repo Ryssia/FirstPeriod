@@ -53,5 +53,4 @@ public class Usuario {
         return "Usuario [id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento.toString() + ", email=" + email + "]";
     }
 
-
 }

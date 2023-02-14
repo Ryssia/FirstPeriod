@@ -38,7 +38,7 @@ public class TelaCadastro extends BaseController{
     @FXML
     private void onActionSalvar(){
 
-        if(tfNome.getText() != null && dpDataNascimento.getValue() != null && tfEmail.getText() != null){
+        if(tfNome.getText() != null && dpDataNascimento.getValue() != null && tfEmail.getText() != null){       //verifica se os campos não estão vazios
 
             LocalDate localDate = dpDataNascimento.getValue();
             Result resultado = repositorio.salvar(new Usuario(tfNome.getText(), LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0), tfEmail.getText()));

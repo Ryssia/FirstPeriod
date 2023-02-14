@@ -15,8 +15,8 @@
     -fx-background-color: #f8eccf;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
-    /* -fx-border-color: #bacaec; */
-    /* -fx-border-width: 1; */
+    /* -fx-border-color: #bacaec;
+    -fx-border-width: 1; */
     -fx-margin-bottom: 10;
 }
 

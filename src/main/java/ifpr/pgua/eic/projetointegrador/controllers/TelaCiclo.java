@@ -4,9 +4,6 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
-import com.google.protobuf.Empty;
-
-
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.model.entities.CicloMenstrual;
 import ifpr.pgua.eic.projetointegrador.model.entities.Usuario;
