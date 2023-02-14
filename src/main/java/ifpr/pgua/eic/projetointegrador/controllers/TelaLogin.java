@@ -8,6 +8,7 @@ import ifpr.pgua.eic.projetointegrador.model.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.model.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,7 +22,7 @@ public class TelaLogin extends BaseController{
     private DatePicker dpDataNascimento;
 
     @FXML
-    private Label lbErro;//arrumar na tela fxml    
+    private Label lbErro;   
 
     private UsuarioRepository repositorio;
 
@@ -31,24 +32,36 @@ public class TelaLogin extends BaseController{
 
     @FXML
     private void onActionLogar(){
-        LocalDate localDate = dpDataNascimento.getValue();
-        Usuario usuario = repositorio.logar(tfEmail.getText(), LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0));
-        if(usuario == null){
-            System.out.println("");
 
-            //pop alert
-            lbErro.setText("Usuário ou senha inválidos");
+        if(!(tfEmail.getText() == null) && !(dpDataNascimento.getValue() == null)){     //verifica se usuário e data estão preenchidos
+            LocalDate localDate = dpDataNascimento.getValue();
+            Usuario usuario = repositorio.logar(tfEmail.getText(), LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0));
+
+            if(usuario == null){            //testa se usuário logou
+                System.out.println("");
+
+                Alert popAlert = new Alert(Alert.AlertType.ERROR);
+                popAlert.setHeaderText("Usuário inválido!");
+                popAlert.show();
+
+            }
+            else{
+                App.pushScreen("PRINCIPAL");
+                App.changeScreenRegion("HOME", BorderPaneRegion.CENTER);
+            }
         }
         else{
-            App.pushScreen("PRINCIPAL");
-            App.changeScreenRegion("HOME", BorderPaneRegion.CENTER);
+
+            Alert popAlert = new Alert(Alert.AlertType.ERROR);
+            popAlert.setHeaderText("Email ou data de nascimento não preenchidos!");
+            popAlert.show();
         }
+        
     }
 
     @FXML
     private void onActionCadastrar(){
         App.changeScreenRegion("CADASTRO", BorderPaneRegion.CENTER); //abre tela Cadastro
     }
-
 
 }

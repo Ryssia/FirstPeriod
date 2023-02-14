@@ -37,19 +37,28 @@ public class TelaCadastro extends BaseController{
 
     @FXML
     private void onActionSalvar(){
-        LocalDate localDate = dpDataNascimento.getValue();
-        Result resultado = repositorio.salvar(new Usuario(tfNome.getText(), LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0), tfEmail.getText()));
-        
-        Alert popAlert = new Alert(Alert.AlertType.INFORMATION);
-        popAlert.setHeaderText(resultado.getMsg());
-        popAlert.show();
 
-        if(resultado instanceof SuccessResult){
+        if(tfNome.getText() != null && dpDataNascimento.getValue() != null && tfEmail.getText() != null){
+
+            LocalDate localDate = dpDataNascimento.getValue();
+            Result resultado = repositorio.salvar(new Usuario(tfNome.getText(), LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0), tfEmail.getText()));
             
-            App.changeScreenRegion("LOGIN", BorderPaneRegion.CENTER);
+            Alert popAlert = new Alert(Alert.AlertType.INFORMATION);
+            popAlert.setHeaderText(resultado.getMsg());
+            popAlert.show();
+
+            if(resultado instanceof SuccessResult){
+                
+                App.changeScreenRegion("LOGIN", BorderPaneRegion.CENTER);
+            }
+
         }
-        //se nao der certo faz algo aqui
-        
+        else{
+            Alert popAlert = new Alert(Alert.AlertType.ERROR);
+            popAlert.setHeaderText("Todos os campos devem estar preenchidos!");
+            popAlert.show();
+        }
+
     }
 
 }

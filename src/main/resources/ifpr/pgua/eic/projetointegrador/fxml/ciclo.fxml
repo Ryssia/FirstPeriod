@@ -28,7 +28,6 @@
              </Label>
              <Button layoutX="97.0" layoutY="512.0" onAction="#onActionEditar" text="Editar" />
 
-
         </children>
     </AnchorPane>
 

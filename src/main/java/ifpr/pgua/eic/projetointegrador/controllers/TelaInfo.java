@@ -49,6 +49,7 @@ public class TelaInfo extends BaseController{
             postIt.setPrefWidth(400.0);
 
             postIt.getChildren().add(label);
+            postIt.getStyleClass().add("card");
             vbInfo.getChildren().add(postIt);
             
         }

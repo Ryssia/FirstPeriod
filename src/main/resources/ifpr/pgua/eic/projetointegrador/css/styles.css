@@ -1,5 +1,5 @@
 .button{
-    -fx-color:#bcccec;
+    -fx-color:#bacaec;
     -fx-border-radius: 20;
     -fx-background-radius: 20;
 }
@@ -11,10 +11,20 @@
     -fx-background-size: cover;
 }
 
+.card{
+    -fx-background-color: #f8eccf;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    /* -fx-border-color: #bacaec; */
+    /* -fx-border-width: 1; */
+    -fx-margin-bottom: 10;
+}
+
+
 /*  
 https://i.pinimg.com/564x/3c/ff/a4/3cffa4b6e68369a01fc4aac04cb6e49e.jpg manchadinho
 
-
+#bacaec;
 
 https://i.pinimg.com/564x/74/e1/70/74e170b0ba6330ec7ad0c9e688ba17d1.jpg nuvenzinha
 

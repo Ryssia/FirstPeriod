@@ -31,7 +31,14 @@ public class JDBCInfoDAO {
                 String info = consulta.getString("informacoes");
                 informacoes.add(info);
             }
+
+            pstm.close();
+            //fechar result set se der ruim consulta.close
+            con.close();
+
             return informacoes;
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,6 +57,10 @@ public class JDBCInfoDAO {
             while(consulta.next()){
                 informacoes.add(consulta.getString("informacoes"));
             }
+
+            pstm.close();
+            con.close();
+
             return informacoes;
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,6 +82,9 @@ public class JDBCInfoDAO {
             while(consulta.next()){
                 categorias.add(consulta.getString("categoria"));
             }
+
+            pstm.close();
+            con.close();
 
             return categorias;
         } catch (Exception e) {
